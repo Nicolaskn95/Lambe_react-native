@@ -53,6 +53,7 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Dancing Script.ttf</string>
 		<string>shelter.otf</string>
 	</array>
 </dict>
