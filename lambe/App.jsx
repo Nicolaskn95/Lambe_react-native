@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
-
-import { Text, SafeAreaView } from 'react-native'
+import { Text, SafeAreaView, StyleSheet } from 'react-native'
+import Header from './src/components/Header'
+import Post from './src/components/Post'
 
 export default class App extends Component {
   render () {
     return (
-      <SafeAreaView>
-        <Text style={{fontSize: 30, fontFamily: 'Dancing Script'}}>Lambe Lambe</Text>
-        <Text style={{fontSize: 30, fontFamily: 'shelter'}}>Lambe Lambe</Text>
+      <SafeAreaView style={{flex: 1}}>
+        <Header />
+        <Post image={require('./assets/imgs/fence.jpg')}/>
       </SafeAreaView>
     )
   }
 }
+
+const styles = StyleSheet.create({
+
+})
