@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
       marginTop: Platform.OS === 'ios' ? 20 : 0,
       padding: 10,
       borderBottomWidth:1.5,
-      borderColor: '#BBB'
+      borderColor: '#BBB',
+      width: '100%'
    },
    title : {
       fontFamily: 'Dancing Script',
