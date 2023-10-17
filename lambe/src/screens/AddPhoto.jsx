@@ -12,7 +12,6 @@ import {
    Platform,
    ScrollView,
    Alert,
-   PermissionsAndroid
 } from 'react-native'
 
 class AddPhoto extends Component {
@@ -23,7 +22,6 @@ class AddPhoto extends Component {
    }
 
    options = {
-      saveToPhotos: true,
       mediaType: 'photo'
    }
 
@@ -50,18 +48,18 @@ class AddPhoto extends Component {
    pickImageFromGalery = async () => {
       const options = {
          mediaType: 'photo',
-         includeBase64: 'true'
       }
       const result = await launchImageLibrary(options)
       console.warn(result)
       if(result.assets) {
-         this.state.image = result.assets[0].uri
+         this.setState({image: result.assets[0].uri})
       }
    };
 
     pickImageFromCamera = async () => {
 
-      const result = await launchCamera(options)         
+      const result = await launchCamera(this.options)    
+       this.setState({image: result.assets[0].uri})
    }
 
    save = async () => {
@@ -74,10 +72,10 @@ class AddPhoto extends Component {
                <View style={styles.container}>
                   <Text style={styles.title}>Compartilhe uma imagem</Text>
                   <View style={styles.imageContainer}>
-                     <Image source={this.state.image} style={styles.image}/>
+                     <Image source={this.state.image ? {uri: this.state.image} : require('../../assets/imgs/icon.png')} style={styles.image}/>
                   </View>
                   <TouchableOpacity onPress={this.handleImageUser} style={styles.buttom}>
-                     <Text style={styles.buttomText}>Abrir a camera</Text>
+                     <Text style={styles.buttomText}>Escolha a foto</Text>
                   </TouchableOpacity>
                   <TextInput 
                      placeholder='Algum comentário para a foto?'
@@ -111,7 +109,7 @@ const styles = StyleSheet.create({
       marginTop: 10
    },
    image: {
-      width: Dimensions.get('window').width,
+      width: '100%',
       height: Dimensions.get('window').width / 2,
       resizeMode: 'center'
    },

@@ -1,25 +1,18 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import AddPhoto from './screens/AddPhoto'
 import Feed from './screens/Feed'
+import Profile from './screens/Profile'
 
 const Tab = createBottomTabNavigator()
-
-function Profile () {
-   <View>
-      <Text>profile</Text>
-   </View>
-}
 
 class Navigator extends Component{
   render() {
 
      return (
-        <NavigationContainer>
       <Tab.Navigator 
          initialRouteName='Feed' 
          screenOptions={{
@@ -40,23 +33,22 @@ class Navigator extends Component{
             component={AddPhoto}
             options={{
                tabBarLabel: 'Add Picture',
-               tabBarIcon: ({color}) => {
+               tabBarIcon: ({color}) => (
                   <MCI name='camera' color={color} size={30} />
-               }
+               )
             }}
          />
          <Tab.Screen 
-            name='profile'
+            name='Profile'
             component={Profile}
             options={{
                tabBarLabel: 'Profile',
-               tabBarIcon: ({color}) => {
-                  <MCI name='user' size={30} color={color}/>
-               }
+               tabBarIcon: ({color}) => (
+                  <MCI name='account' size={30} color={color}/>
+               )
             }}
          />
       </Tab.Navigator>
-    </NavigationContainer>  
     )
    }
 }
